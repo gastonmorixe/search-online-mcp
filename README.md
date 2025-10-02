@@ -45,6 +45,42 @@ codex mcp list
 codex mcp get searchonline --json
 ```
 
+## Optional: install the Fish function directly
+
+If you use fish shell, you can install the `search_online` function for your own terminal use. It’s the same logic the MCP server’s “fast path” expects.
+
+Dependencies: fish 3+, `uvx` (from `astral-sh/uv`), `jq`, `glow` (optional), and a Brave API key.
+
+Install:
+
+```bash
+mkdir -p ~/.config/fish/functions
+cp contrib/fish/search_online.fish ~/.config/fish/functions/search_online.fish
+set -Ux BRAVE_SEARCH_PYTHON_CLIENT_API_KEY "YOUR_BRAVE_KEY"
+# Open a new shell or: source ~/.config/fish/functions/search_online.fish
+```
+
+Usage examples:
+
+```fish
+# JSON (default)
+search_online -L 5 "gaston morixe" | jq '.results[:3] | map({title,url})'
+
+# NDJSON streaming
+search_online -o ndjson -L 3 "openai codex" | head -n 3
+
+# Plain text (no color)
+search_online -o text -n "rust async tutorial"
+
+# Raw engine JSON
+search_online -o raw "openai codex" | jq '.web.results[:2] | map({title,url})'
+```
+
+Notes:
+- The function prints a standardized JSON object in `-o json` mode (engine/vertical/query/results…).
+- Set `SEARCH_ONLINE_ENGINE` to override default engine (currently only `brave`).
+- `glow` is optional; `-n/--no-color` disables colorized output.
+
 ## Tool schema
 
 Input (zod → JSON Schema):
@@ -99,4 +135,3 @@ What they do:
 ## License
 
 MIT
-
