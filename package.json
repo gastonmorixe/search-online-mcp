@@ -1,0 +1,33 @@
+{
+  "name": "search-online-mcp",
+  "version": "0.1.2",
+  "private": false,
+  "type": "module",
+  "bin": {
+    "search-online-mcp": "index.mjs"
+  },
+  "scripts": {
+    "start": "node index.mjs",
+    "self-test": "node self_test_client.mjs",
+    "test:list": "node tests/list_names.mjs",
+    "test:call": "node tests/call_basic.mjs",
+    "test:invalid": "node tests/call_invalid.mjs",
+    "test:all": "npm run -s test:list && npm run -s test:call && npm run -s test:invalid"
+  },
+  "keywords": ["mcp","model-context-protocol","search","brave","codex"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourname/search-online-mcp.git"
+  },
+  "homepage": "https://github.com/yourname/search-online-mcp",
+  "bugs": {
+    "url": "https://github.com/yourname/search-online-mcp/issues"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.4.0"
+  }
+}
