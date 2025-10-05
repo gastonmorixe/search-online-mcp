@@ -1,3 +1,6 @@
+> [!NOTE]
+> Vibe-coded with Codex. Use it at your own risk.
+
 # Search Online MCP Server
 
 An MCP (Model Context Protocol) server that exposes a standardized web search tool for agents and clients like OpenAI Codex, Claude, and Cursor. It uses Brave Search under the hood and returns stable, agent‑friendly JSON.
